@@ -25,7 +25,10 @@ public class KeyHandler implements KeyListener{
 			break;
 		case KeyEvent.VK_RIGHT:
 			spaceShip.moveRight();
-			break;			
+			break;	
+		case KeyEvent.VK_ESCAPE:
+			System.exit(0);
+			break;
 		}
 		
 	}
