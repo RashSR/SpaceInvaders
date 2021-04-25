@@ -8,7 +8,7 @@ public class SpaceShip {
 
 	private JLabel spaceShip;
 	private static final String SHIP_NAME = "raumschiff.png";
-	private static final int START_X = 352;
+	private static final int START_X = 350;
 	private static final int Y = 450;
 	private int x;
 	private static int SPEED = 8;
@@ -27,22 +27,16 @@ public class SpaceShip {
 	}
 
 	public void moveRight() {
-		if(x < 687) {
-			spaceShip.setVisible(false);
+		if(x + SPEED < 800 - 112) {
 			x += SPEED;
 			spaceShip.setBounds(x, Y, 112, 55);
-			System.out.println("X: " + x);
-			spaceShip.setVisible(true);
 		}
 	}
 
 	public void moveLeft() {
-		if(x > 0) {
-			spaceShip.setVisible(false);
-			x -= SPEED;
+		if(x - SPEED > 0) {
+			x-= SPEED;
 			spaceShip.setBounds(x, Y, 112, 55);
-			System.out.println("X: " + x);
-			spaceShip.setVisible(true);
 		}
 	}
 
