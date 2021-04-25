@@ -19,9 +19,12 @@ public class GUI {
 	public GUI() {
 		initFrame();
 		SpaceShip spaceShip = new SpaceShip(mainFrame);
+		Enemy enemy = new Enemy(mainFrame);
 		showBackground();
 		mainFrame.setVisible(true);
-		mainFrame.addKeyListener(new KeyHandler(spaceShip));
+		//TODO: thread, sonst schlecht
+		enemy.startMoving();
+		//mainFrame.addKeyListener(new KeyHandler(spaceShip));
 	}
 	
 	private void initFrame() {
