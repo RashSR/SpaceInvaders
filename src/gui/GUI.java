@@ -22,7 +22,7 @@ public class GUI {
 		Enemy enemy = new Enemy(mainFrame);
 		showBackground();
 		mainFrame.setVisible(true);
-		//TODO: thread, sonst schlecht
+		//TODO: thread, sonst schlecht d
 		//enemy.startMoving();
 		mainFrame.addKeyListener(new KeyHandler(spaceShip));
 	}

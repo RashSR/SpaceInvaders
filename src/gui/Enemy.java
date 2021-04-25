@@ -15,6 +15,7 @@ public class Enemy {
 	
 	public Enemy(JFrame mainFrame){
 		initEnemy(mainFrame);
+		System.out.println();;
 	}
 	
 	private void initEnemy(JFrame mainFrame) {
