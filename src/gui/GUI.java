@@ -23,8 +23,8 @@ public class GUI {
 		showBackground();
 		mainFrame.setVisible(true);
 		//TODO: thread, sonst schlecht
-		enemy.startMoving();
-		//mainFrame.addKeyListener(new KeyHandler(spaceShip));
+		//enemy.startMoving();
+		mainFrame.addKeyListener(new KeyHandler(spaceShip));
 	}
 	
 	private void initFrame() {
