@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class SpaceShip {
@@ -13,17 +12,15 @@ public class SpaceShip {
 	private int x;
 	private static int SPEED = 8;
 
-	public SpaceShip(JFrame mainFrame) {
-		initSpaceShip(mainFrame);
-
+	public SpaceShip(JLabel background) {
+		initSpaceShip(background);
 	}
 
-	private void initSpaceShip(JFrame mainFrame) {
+	private void initSpaceShip(JLabel background) {
 		spaceShip = new JLabel(new ImageIcon(SHIP_NAME));
 		x = START_X;
 		spaceShip.setBounds(x, Y, 112, 55);
-		mainFrame.add(spaceShip);
-		spaceShip.setVisible(true);
+		background.add(spaceShip);
 	}
 
 	public void moveRight() {

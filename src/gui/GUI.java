@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 public class GUI {
 	private JFrame mainFrame;
+	private JLabel background;
 	private static final int MAP_COUNT = 2;
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 520;
@@ -18,13 +19,13 @@ public class GUI {
 	
 	public GUI() {
 		initFrame();
-		SpaceShip spaceShip = new SpaceShip(mainFrame);
 		Enemy enemy = new Enemy(mainFrame);
 		showBackground();
-		mainFrame.setVisible(true);
 		//TODO: thread, sonst schlecht d
 		//enemy.startMoving();
+		SpaceShip spaceShip = new SpaceShip(background);
 		mainFrame.addKeyListener(new KeyHandler(spaceShip));
+		mainFrame.setVisible(true);
 	}
 	
 	private void initFrame() {
@@ -36,7 +37,7 @@ public class GUI {
 	}
 	
 	private void showBackground() {
-		JLabel background = new JLabel(new ImageIcon(randomMap()));
+		background = new JLabel(new ImageIcon(randomMap()));
 		background.setBounds(0, 0, WIDTH, HEIGHT);
 		mainFrame.add(background);
 	}
