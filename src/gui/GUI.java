@@ -16,10 +16,15 @@ public class GUI {
 	private static final int HEIGHT = 520;
 	private static final int WIDTH_OFFSET = 12;
 	private static final int HEIGHT_OFFSET = 35;
+	private static final int ENEMY_ANZAHL = 10;
+	private Enemy[] enemies = new Enemy[ENEMY_ANZAHL];
 	
 	public GUI() {
 		initFrame();
-		Enemy enemy = new Enemy(mainFrame);
+
+		for(int i = 0; i <ENEMY_ANZAHL; i++) {
+			enemies[i] = new Enemy(i, mainFrame);
+		}
 		showBackground();
 		//TODO: thread, sonst schlecht d
 		//enemy.startMoving();
@@ -27,7 +32,7 @@ public class GUI {
 		mainFrame.addKeyListener(new KeyHandler(spaceShip));
 		mainFrame.setVisible(true);
 	}
-	
+
 	private void initFrame() {
 		mainFrame = new JFrame("SpaceInvaders");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,17 +40,17 @@ public class GUI {
 		mainFrame.setResizable(false);
 		mainFrame.setLocationRelativeTo(null);
 	}
-	
+
 	private void showBackground() {
 		background = new JLabel(new ImageIcon(randomMap()));
 		background.setBounds(0, 0, WIDTH, HEIGHT);
 		mainFrame.add(background);
 	}
-	
+
 	private String randomMap() {
 		Random rand = new Random();
 		int map = rand.nextInt(MAP_COUNT)+1;
 		return "background" + map + ".png";
 	}
-	
+
 }
