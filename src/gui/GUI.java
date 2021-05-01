@@ -6,11 +6,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import game.Game;
+
 
 
 public class GUI {
 	private JFrame mainFrame;
 	private JLabel background;
+	private Game game;
+	private KeyHandler keyHandler;
 	private static final int MAP_COUNT = 2;
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 520;
@@ -18,18 +22,20 @@ public class GUI {
 	private static final int HEIGHT_OFFSET = 35;
 	private static final int ENEMY_ANZAHL = 10;
 	private Enemy[] enemies = new Enemy[ENEMY_ANZAHL];
-	
+
 	public GUI() {
 		initFrame();
-
-		for(int i = 0; i <ENEMY_ANZAHL; i++) {
-			enemies[i] = new Enemy(i, mainFrame);
-		}
 		showBackground();
-		//TODO: thread, sonst schlecht d
-		//enemy.startMoving();
 		SpaceShip spaceShip = new SpaceShip(background);
-		mainFrame.addKeyListener(new KeyHandler(spaceShip));
+		//TODO HAllo Larissa ich hab mir einfach nur einen angemacht, dass ich es für mich einfacher hab :)
+		/*
+		for(int i = 0; i <ENEMY_ANZAHL; i++) {
+			enemies[i] = new Enemy(i, background);
+		}
+		 */
+		enemies[0] = new Enemy(0, background);
+		this.keyHandler = new KeyHandler(spaceShip);
+		mainFrame.addKeyListener(this.keyHandler);
 		mainFrame.setVisible(true);
 	}
 
@@ -53,4 +59,13 @@ public class GUI {
 		return "background" + map + ".png";
 	}
 
+	public Enemy[] getEnemies() {
+		return this.enemies;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+		this.keyHandler.setGame(game);
+	}
+	
 }

@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Enemy {
@@ -12,45 +11,35 @@ public class Enemy {
 	private static final int START_Y = 50;
 	private int x;
 	private int y;
-	private static int SPEED = 8;
+	private static int X_SPEED = 8;
+	private static int Y_SPEED = 10;
 	
-	public Enemy(int posIndex, JFrame mainFrame){
+	public Enemy(int posIndex, JLabel background){
 		for(int j=0; j< 2;j++) {
-			initEnemy(posIndex, j, mainFrame);
+			initEnemy(posIndex, j, background);
 		}
-		System.out.println();
 	}
 	
-	private void initEnemy(int posIndex, int j, JFrame mainFrame) {
+	private void initEnemy(int posIndex, int j, JLabel background) {
 		enemy = new JLabel(new ImageIcon(ENEMY_NAME));
 		x = START_X + posIndex*75;
 		y = START_Y + j*75;
 		enemy.setBounds(x, y, 40, 40);
-		mainFrame.add(enemy);
-		enemy.setVisible(true);
+		background.add(enemy);
 	}
-	
-	
-	//TODO: anpassen an Threadnutzung
-	public void startMoving() {
-		for(int i=0; i<10000; i++){
-			moveRight();
-			moveLeft();
-		}
-	}
-
 	
 	public void moveRight() {
-		enemy.setVisible(false);
-		x += SPEED;
+		x += X_SPEED;
 		enemy.setBounds(x, y, 40, 40);
-		enemy.setVisible(true);
 	}
 	
 	public void moveLeft() {
-		enemy.setVisible(false);
-		x -= SPEED;
+		x -= X_SPEED;
 		enemy.setBounds(x, y, 40, 40);
-		enemy.setVisible(true);
+	}
+	
+	public void moveDown() {
+		y += Y_SPEED;
+		enemy.setBounds(x, y, 40, 40);
 	}
 }
