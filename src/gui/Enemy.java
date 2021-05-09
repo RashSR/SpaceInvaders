@@ -14,16 +14,16 @@ public class Enemy {
 	private static int X_SPEED = 8;
 	private static int Y_SPEED = 10;
 	
-	public Enemy(int posIndex, JLabel background){
-		for(int j=0; j< 2;j++) {
-			initEnemy(posIndex, j, background);
-		}
+	public Enemy(int posXIndex, int posYIndex, JLabel background){
+		
+			initEnemy(posXIndex, posYIndex, background);
+		
 	}
 	
-	private void initEnemy(int posIndex, int j, JLabel background) {
+	private void initEnemy(int posXIndex, int  posYIndex, JLabel background) {
 		enemy = new JLabel(new ImageIcon(ENEMY_NAME));
-		x = START_X + posIndex*75;
-		y = START_Y + j*75;
+		x = START_X + posXIndex*100;
+		y = START_Y + posYIndex*75;
 		enemy.setBounds(x, y, 40, 40);
 		background.add(enemy);
 	}

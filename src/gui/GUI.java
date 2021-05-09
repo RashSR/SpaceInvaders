@@ -8,8 +8,6 @@ import javax.swing.JLabel;
 
 import game.Game;
 
-
-
 public class GUI {
 	private JFrame mainFrame;
 	private JLabel background;
@@ -20,20 +18,38 @@ public class GUI {
 	private static final int HEIGHT = 520;
 	private static final int WIDTH_OFFSET = 12;
 	private static final int HEIGHT_OFFSET = 35;
-	private static final int ENEMY_ANZAHL = 10;
+	private static final int ENEMY_ANZAHL = 25;		//Anzahl Gegner
+	private static final int ENEMY_IN_ROWS = 7;		//Anzahl Gegner in Reihen
+	
 	private Enemy[] enemies = new Enemy[ENEMY_ANZAHL];
 
 	public GUI() {
 		initFrame();
 		showBackground();
 		SpaceShip spaceShip = new SpaceShip(background);
-		//TODO HAllo Larissa ich hab mir einfach nur einen angemacht, dass ich es für mich einfacher hab :)
-		/*
-		for(int i = 0; i <ENEMY_ANZAHL; i++) {
-			enemies[i] = new Enemy(i, background);
+		// TODO Hallo Larissa ich hab mir einfach nur einen angemacht, dass ich es für
+		// mich einfacher hab :)
+
+		int enemyNumber = 0;
+		int y = 0;
+		int enemyRows = ENEMY_ANZAHL / ENEMY_IN_ROWS;
+		
+		if((ENEMY_ANZAHL % ENEMY_IN_ROWS) != 0) {
+		enemyRows++;
 		}
-		 */
-		enemies[0] = new Enemy(0, background);
+		
+
+		for (int i = 0; i < enemyRows; i++) {
+			for (int j = 0; j < ENEMY_IN_ROWS; j++) {
+				enemies[enemyNumber] = new Enemy(j, i, background);
+				enemyNumber++;
+				if(enemyNumber>=ENEMY_ANZAHL) {
+					break;
+				}
+			}
+		}
+
+		// enemies[0] = new Enemy(0, background);
 		this.keyHandler = new KeyHandler(spaceShip);
 		mainFrame.addKeyListener(this.keyHandler);
 		mainFrame.setVisible(true);
@@ -42,7 +58,7 @@ public class GUI {
 	private void initFrame() {
 		mainFrame = new JFrame("SpaceInvaders");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setSize(WIDTH+WIDTH_OFFSET, HEIGHT+HEIGHT_OFFSET);
+		mainFrame.setSize(WIDTH + WIDTH_OFFSET, HEIGHT + HEIGHT_OFFSET);
 		mainFrame.setResizable(false);
 		mainFrame.setLocationRelativeTo(null);
 	}
@@ -55,7 +71,7 @@ public class GUI {
 
 	private String randomMap() {
 		Random rand = new Random();
-		int map = rand.nextInt(MAP_COUNT)+1;
+		int map = rand.nextInt(MAP_COUNT) + 1;
 		return "background" + map + ".png";
 	}
 
@@ -67,5 +83,5 @@ public class GUI {
 		this.game = game;
 		this.keyHandler.setGame(game);
 	}
-	
+
 }
