@@ -18,41 +18,41 @@ public class GUI {
 	private static final int HEIGHT = 520;
 	private static final int WIDTH_OFFSET = 12;
 	private static final int HEIGHT_OFFSET = 35;
-	private static final int ENEMY_ANZAHL = 25;		//Anzahl Gegner
-	private static final int ENEMY_IN_ROWS = 7;		//Anzahl Gegner in Reihen
-	
+	private static final int ENEMY_ANZAHL = 25; // Anzahl Gegner
+	private static final int ENEMY_IN_ROWS = 7; // Anzahl Gegner in Reihen
+
 	private Enemy[] enemies = new Enemy[ENEMY_ANZAHL];
 
 	public GUI() {
 		initFrame();
 		showBackground();
 		SpaceShip spaceShip = new SpaceShip(background);
-		// TODO Hallo Larissa ich hab mir einfach nur einen angemacht, dass ich es für
-		// mich einfacher hab :)
+		initGuiEnemies();
+
+		this.keyHandler = new KeyHandler(spaceShip);
+		mainFrame.addKeyListener(this.keyHandler);
+		mainFrame.setVisible(true);
+	}
+
+	private void initGuiEnemies() {
 
 		int enemyNumber = 0;
 		int y = 0;
 		int enemyRows = ENEMY_ANZAHL / ENEMY_IN_ROWS;
-		
-		if((ENEMY_ANZAHL % ENEMY_IN_ROWS) != 0) {
-		enemyRows++;
+
+		if ((ENEMY_ANZAHL % ENEMY_IN_ROWS) != 0) {
+			enemyRows++;
 		}
-		
 
 		for (int i = 0; i < enemyRows; i++) {
 			for (int j = 0; j < ENEMY_IN_ROWS; j++) {
 				enemies[enemyNumber] = new Enemy(j, i, background);
 				enemyNumber++;
-				if(enemyNumber>=ENEMY_ANZAHL) {
+				if (enemyNumber >= ENEMY_ANZAHL) {
 					break;
 				}
 			}
 		}
-
-		// enemies[0] = new Enemy(0, background);
-		this.keyHandler = new KeyHandler(spaceShip);
-		mainFrame.addKeyListener(this.keyHandler);
-		mainFrame.setVisible(true);
 	}
 
 	private void initFrame() {
