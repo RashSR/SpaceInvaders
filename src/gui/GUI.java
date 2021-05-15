@@ -37,7 +37,6 @@ public class GUI {
 	private void initGuiEnemies() {
 
 		int enemyNumber = 0;
-		int y = 0;
 		int enemyRows = ENEMY_ANZAHL / ENEMY_IN_ROWS;
 
 		if ((ENEMY_ANZAHL % ENEMY_IN_ROWS) != 0) {
