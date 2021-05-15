@@ -51,6 +51,7 @@ public class GUI {
 			}
 		}
 	}
+	
 
 	private void initFrame() {
 		mainFrame = new JFrame("SpaceInvaders");
@@ -81,6 +82,18 @@ public class GUI {
 		this.keyHandler.setGame(game);
 		for(int i = 0; i < enemies.length; i++) {
 			enemies[i].setGame(game);
+		}
+	}
+	
+	public JLabel getBackground() {
+		return background;
+	}
+	
+	public void hideEnemies() {
+		for(int i = 0; i < enemies.length; i++) {
+			if(enemies[i] != null) {
+				enemies[i].hideEnemy();
+			}
 		}
 	}
 
