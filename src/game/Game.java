@@ -7,11 +7,13 @@ public class Game extends Thread{
 	private GUI gui;
 	private final int MOVE_COUNT = 10;
 	private final int WAIT_TIME_IN_MILLIS = 500;
-	private boolean isRunning; 
+	private boolean isRunning;
+	private boolean hasEnded;
 
 	public Game(GUI gui) {
 		this.gui = gui;
 		this.isRunning = true;
+		this.hasEnded = false;
 	}
 
 	@Override
@@ -60,10 +62,22 @@ public class Game extends Thread{
 	}
 
 	public void pauseGame() {
+		if(!hasEnded) {
+			if(isRunning) {
+				isRunning = false;
+				System.out.println("Your Game is paused.");
+			}else {
+				isRunning = true;
+				System.out.println("Your Game is unpaused.");
+			}
+		}
+	}
+
+	public void endGame() {
 		if(isRunning) {
+			hasEnded = true;
 			isRunning = false;
-		}else {
-			isRunning = true;
+			System.out.println("You lost the Game!");
 		}
 	}
 }

@@ -28,14 +28,12 @@ public class GUI {
 		showBackground();
 		SpaceShip spaceShip = new SpaceShip(background);
 		initGuiEnemies();
-
 		this.keyHandler = new KeyHandler(spaceShip);
 		mainFrame.addKeyListener(this.keyHandler);
 		mainFrame.setVisible(true);
 	}
 
 	private void initGuiEnemies() {
-
 		int enemyNumber = 0;
 		int enemyRows = ENEMY_ANZAHL / ENEMY_IN_ROWS;
 
@@ -81,6 +79,9 @@ public class GUI {
 	public void setGame(Game game) {
 		this.game = game;
 		this.keyHandler.setGame(game);
+		for(int i = 0; i < enemies.length; i++) {
+			enemies[i].setGame(game);
+		}
 	}
 
 }

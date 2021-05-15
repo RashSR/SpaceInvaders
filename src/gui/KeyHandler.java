@@ -17,17 +17,20 @@ public class KeyHandler implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_LEFT: 
-			spaceShip.moveLeft();
+			if(game.isRunning()) {
+				spaceShip.moveLeft();
+			}
 			break;
 		case KeyEvent.VK_RIGHT:
-			spaceShip.moveRight();
+			if(game.isRunning()) {
+				spaceShip.moveRight();
+			}
 			break;
 		case KeyEvent.VK_ESCAPE:
 			System.exit(0);
@@ -41,7 +44,6 @@ public class KeyHandler implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void setGame(Game game) {
