@@ -11,7 +11,6 @@ import game.Game;
 public class GUI {
 	private JFrame mainFrame;
 	private JLabel background;
-	private Game game;
 	private KeyHandler keyHandler;
 	private static final int MAP_COUNT = 2;
 	private static final int WIDTH = 800;
@@ -21,12 +20,13 @@ public class GUI {
 	private static final int ENEMY_ANZAHL = 25; // Anzahl Gegner
 	private static final int ENEMY_IN_ROWS = 7; // Anzahl Gegner in Reihen
 
+	private SpaceShip spaceShip;
 	private Enemy[] enemies = new Enemy[ENEMY_ANZAHL];
 
 	public GUI() {
 		initFrame();
 		showBackground();
-		SpaceShip spaceShip = new SpaceShip(background);
+		this.spaceShip = new SpaceShip(background);
 		initGuiEnemies();
 		this.keyHandler = new KeyHandler(spaceShip);
 		mainFrame.addKeyListener(this.keyHandler);
@@ -50,8 +50,7 @@ public class GUI {
 				}
 			}
 		}
-	}
-	
+	}	
 
 	private void initFrame() {
 		mainFrame = new JFrame("SpaceInvaders");
@@ -78,7 +77,6 @@ public class GUI {
 	}
 
 	public void setGame(Game game) {
-		this.game = game;
 		this.keyHandler.setGame(game);
 		for(int i = 0; i < enemies.length; i++) {
 			enemies[i].setGame(game);
@@ -95,6 +93,27 @@ public class GUI {
 				enemies[i].hideEnemy();
 			}
 		}
+	}
+	
+	public void showEnemies() {
+		for(int i = 0; i < enemies.length; i++) {
+			if(enemies[i] != null) {
+				enemies[i].showEnemy();
+			}
+		}
+	}
+	
+	public void showSpaceShip() {
+		spaceShip.showShip();
+	}
+	
+	public void hideSpaceShip() {
+		spaceShip.hideShip();
+	}
+	
+	public void hideAllGuiElements() {
+		hideSpaceShip();
+		hideEnemies();
 	}
 
 }

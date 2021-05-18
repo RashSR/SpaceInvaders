@@ -55,4 +55,8 @@ public class Enemy {
 	public void hideEnemy() {
 		this.enemy.setVisible(false);
 	}
+	
+	public void showEnemy() {
+		this.enemy.setVisible(true);
+	}
 }

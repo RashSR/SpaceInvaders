@@ -36,5 +36,13 @@ public class SpaceShip {
 			spaceShip.setBounds(x, Y, 112, 55);
 		}
 	}
+	
+	public void hideShip() {
+		spaceShip.setVisible(false);
+	}
+	
+	public void showShip() {
+		spaceShip.setVisible(true);
+	}
 
 }

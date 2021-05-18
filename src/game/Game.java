@@ -82,9 +82,10 @@ public class Game extends Thread{
 			hasEnded = true;
 			isRunning = false;
 			System.out.println("You lost the Game!");
-			gui.hideEnemies();
+			gui.hideAllGuiElements();
+			JLabel background = gui.getBackground();
 			JLabel gameover = new JLabel(new ImageIcon(GAME_OVER));
-			gui.getBackground().add(gameover);
+			background.add(gameover);
 			gameover.setBounds(250, 180, 250, 200);
 		}
 	}
